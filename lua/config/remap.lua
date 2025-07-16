@@ -11,8 +11,22 @@ which_key.add({
 	{ "<leader>ff", builtin.find_files, desc = "[F]ind [F]iles" },
 	{ "<leader>fg", builtin.git_files, desc = "[F]ind [G]it Files" },
 	{ "<leader>fs", builtin.live_grep, desc = "[F]ile [S]earch" },
-	{ "<leader><leader>", builtin.buffers, desc = "Find Buffers" },
+	{ "<leader>fh", builtin.help_tags, desc = "[F]ind [H]elp" },
+	{ "<leader>fd", builtin.diagnostics, desc = "[F]ind [D]iagnostics" },
+	{ "<leader><leader>", builtin.buffers, desc = "[ ] Find in Buffers" },
 })
+-- TODO: make above the "[F]ind" group
+
+-- Slightly advanced example of overriding default behavior and theme
+-- TODO: add to whichkey
+vim.keymap.set("n", "<leader>/", function()
+	-- You can pass additional configuration to Telescope to change the theme, layout, etc.
+	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { desc = "[/] Fuzzily search in current buffer" })
+-- TODO: remove "[S]earch group"
 
 -- Primeagen commands
 
@@ -23,9 +37,20 @@ which_key.add({
 	{ "<leader>d", "_d", mode = "v", desc = "Delete to void" },
 })
 
+-- Small Terminal
+which_key.add({
+	"<leader>st",
+	function()
+		vim.cmd.vnew()
+		vim.cmd.term()
+		vim.cmd.wincmd("J")
+		vim.api.nvim_win_set_height(0, 12)
+	end,
+	desc = "[S]mall [T]erminal",
+})
+
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
---
 --
 -- -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
