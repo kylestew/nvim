@@ -49,6 +49,25 @@ which_key.add({
 	desc = "[S]mall [T]erminal",
 })
 
+-- Easy Exit Terminal
+vim.keymap.set("t", "<Esc><Esc>", function()
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
+	vim.cmd("bd!") -- close buffer (terminal window)
+end, { desc = "Escape and close terminal" })
+
+-- Rust Run
+vim.keymap.set("n", "<leader>rr", function()
+	vim.cmd("w") -- Save file first
+	vim.cmd("belowright split | term cargo run")
+end, { desc = "Cargo Run" })
+vim.keymap.set("n", "<leader>rt", function()
+	vim.cmd("w") -- Save file first
+	vim.cmd("belowright split | term cargo test")
+end, { desc = "Cargo Test" })
+vim.keymap.set("n", "<leader>rw", function()
+	vim.cmd("belowright split | term cargo watch -x test")
+end, { desc = "Watch Tests" })
+
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 --

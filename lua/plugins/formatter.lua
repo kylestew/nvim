@@ -7,6 +7,7 @@ return {
 			markdown = { "prettierd" },
 			lua = { "stylua" },
 			c = { "clang_format" },
+			rust = { "rustfmt" },
 			cpp = { "clang_format" },
 			h = { "clang_format" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },

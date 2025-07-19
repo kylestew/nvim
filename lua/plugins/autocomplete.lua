@@ -2,6 +2,14 @@ return { -- Autocompletion
 	"saghen/blink.cmp",
 	event = "VimEnter",
 	version = "1.*",
+	config = function(_, opts)
+		require("blink.cmp").setup(opts)
+		-- Unmap <C-n> and <C-p> if still bound
+		vim.schedule(function()
+			pcall(vim.api.nvim_del_keymap, "i", "<C-n>")
+			pcall(vim.api.nvim_del_keymap, "i", "<C-p>")
+		end)
+	end,
 	dependencies = {
 		-- Snippet Engine
 		{

@@ -14,6 +14,7 @@ return {
 				"javascript",
 				"html",
 				"python",
+				"rust",
 				"typescript",
 			},
 			sync_install = false,
