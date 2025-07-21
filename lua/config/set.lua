@@ -56,3 +56,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+--- Don't auto add comment lines
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		-- remove r and o but leave c
+		vim.opt_local.formatoptions:remove({ "r", "o" })
+	end,
+})
