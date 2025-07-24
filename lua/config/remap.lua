@@ -59,10 +59,12 @@ end, { desc = "Escape and close terminal" })
 vim.keymap.set("n", "<leader>rr", function()
 	vim.cmd("w") -- Save file first
 	vim.cmd("belowright split | term cargo run")
+	vim.cmd("startinsert")
 end, { desc = "Cargo Run" })
 vim.keymap.set("n", "<leader>rt", function()
 	vim.cmd("w") -- Save file first
 	vim.cmd("belowright split | term cargo test")
+	vim.cmd("startinsert")
 end, { desc = "Cargo Test" })
 vim.keymap.set("n", "<leader>rw", function()
 	vim.cmd("belowright split | term cargo watch -x test")

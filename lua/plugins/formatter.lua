@@ -11,6 +11,7 @@ return {
 			cpp = { "clang_format" },
 			h = { "clang_format" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+			html = { "prettierd", "prettier", stop_after_first = true },
 		},
 		-- Set default options
 		default_format_ops = {
