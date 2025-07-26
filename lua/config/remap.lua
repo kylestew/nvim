@@ -1,6 +1,9 @@
 local which_key = require("which-key")
 local builtin = require("telescope.builtin")
 
+-- Faster save + lint
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write Buffer" })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
