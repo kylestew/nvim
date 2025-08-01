@@ -9,16 +9,15 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write Buffer" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Telescope Commands
-
 which_key.add({
+	{ "<leader>f", name = "[F]ind" },
 	{ "<leader>ff", builtin.find_files, desc = "[F]ind [F]iles" },
 	{ "<leader>fg", builtin.git_files, desc = "[F]ind [G]it Files" },
 	{ "<leader>fs", builtin.live_grep, desc = "[F]ile [S]earch" },
 	{ "<leader>fh", builtin.help_tags, desc = "[F]ind [H]elp" },
 	{ "<leader>fd", builtin.diagnostics, desc = "[F]ind [D]iagnostics" },
-	{ "<leader><leader>", builtin.buffers, desc = "[ ] Find in Buffers" },
+	{ "<leader><leader>", builtin.buffers, desc = "[ ] Buffers" },
 })
--- TODO: make above the "[F]ind" group
 
 -- Slightly advanced example of overriding default behavior and theme
 -- TODO: add to whichkey
@@ -28,8 +27,7 @@ vim.keymap.set("n", "<leader>/", function()
 		winblend = 10,
 		previewer = false,
 	}))
-end, { desc = "[/] Fuzzily search in current buffer" })
--- TODO: remove "[S]earch group"
+end, { desc = "[/] Fuzzy find buffer" })
 
 -- Primeagen commands
 
@@ -59,6 +57,9 @@ vim.keymap.set("t", "<Esc><Esc>", function()
 end, { desc = "Escape and close terminal" })
 
 -- Rust Run
+which_key.register({
+	r = { name = "[R]ust" },
+}, { prefix = "<leader>" })
 vim.keymap.set("n", "<leader>rr", function()
 	vim.cmd("w") -- Save file first
 	vim.cmd("belowright split | term cargo run")

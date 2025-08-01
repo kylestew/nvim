@@ -1,10 +1,10 @@
 vim.opt.termguicolors = true
--- vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme("tokyonight")
 -- vim.cmd.colorscheme("tokyonight-night")
 -- vim.cmd.colorscheme("tokyonight-storm")
 -- vim.cmd.colorscheme("tokyonight-day")
 -- vim.cmd.colorscheme("rose-pine")
-vim.cmd.colorscheme("rose-pine-moon")
+-- vim.cmd.colorscheme("rose-pine-moon")
 
 -- Line numbers
 vim.opt.number = true
@@ -24,7 +24,8 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+vim.opt.textwidth = 90
+vim.opt.colorcolumn = "90"
 
 -- Show which line your cursor is on
 vim.o.cursorline = true
