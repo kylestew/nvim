@@ -57,9 +57,10 @@ vim.keymap.set("t", "<Esc><Esc>", function()
 end, { desc = "Escape and close terminal" })
 
 -- Rust Run
-which_key.register({
-	r = { name = "[R]ust" },
-}, { prefix = "<leader>" })
+
+which_key.add({
+	{ "<leader>r", name = "[R]ust" },
+})
 vim.keymap.set("n", "<leader>rr", function()
 	vim.cmd("w") -- Save file first
 	vim.cmd("belowright split | term cargo run")
