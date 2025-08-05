@@ -7,6 +7,21 @@ return {
 		-- Useful for getting pretty icons, but requires a Nerd Font.
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
+	opts = {
+		defaults = {
+			-- hide everything *inside* .git/ but still show .gitignore
+			file_ignore_patterns = { "^%.git/" },
+		},
+		pickers = {
+			-- ① normal file search: respect .gitignore **and** show dot-files
+			find_files = {
+				hidden = true, -- include “.env”, “.gitignore”, …
+				no_ignore = false, -- still read .gitignore /.ignore
+				no_ignore_parent = false, -- look at parent dirs too
+			},
+		},
+	},
+
 	-- config = function()
 	-- 	-- See `:help telescope.builtin`
 	-- 	local builtin = require("telescope.builtin")
