@@ -11,6 +11,7 @@ return {
 			cpp = { "clang_format" },
 			h = { "clang_format" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
+			typescript = { "prettierd", "prettier", stop_after_first = true },
 			json = { "prettierd", "prettier", stop_after_first = true },
 			html = { "prettierd", "prettier", stop_after_first = true },
 			toml = { "tombi" },
@@ -22,6 +23,10 @@ return {
 		-- Set up format-on-save
 		format_on_save = {
 			timeout_ms = 500,
+			lsp_format = "first",
+			filter = function(client)
+				return client.name == "eslint"
+			end,
 		},
 	},
 }

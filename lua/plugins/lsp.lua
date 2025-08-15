@@ -219,6 +219,21 @@ return {
 			-- ts_ls = {},
 			--
 
+			-- TypeScript / JavaScript
+			ts_ls = {
+				-- prevent conflicts with deno projects
+				root_dir = function(fname)
+					local util = require("lspconfig.util")
+					-- if deno.json* exists, don't start ts_ls
+					if util.root_pattern("deno.json", "deno.jsonc")(fname) then
+						return nil
+					end
+					return util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")(fname)
+				end,
+				-- optional: disable formatting if you prefer eslint/prettier to own it
+				-- on_attach = function(client) client.server_capabilities.documentFormattingProvider = false end,
+			},
+
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
@@ -251,6 +266,7 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code
+			"eslint-lsp",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
