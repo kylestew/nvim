@@ -1,9 +1,9 @@
 return {
-	-- 	"numToStr/Comment.nvim",
-	-- 	opts = {
-	-- 		-- add any options here
-	-- 	},
-	-- 	config = function()
-	-- 		require("Comment").setup()
-	-- 	end,
+	"saecki/crates.nvim",
+	ft = { "rust", "toml" },
+	config = function(_, opts)
+		local crates = require("crates")
+		crates.setup(opts)
+		crates.show()
+	end,
 }
