@@ -80,9 +80,8 @@ vim.keymap.set("n", "<leader>e", function()
 	vim.diagnostic.open_float(nil, { focus = false })
 end, { desc = "Show diagnostics for current line" })
 
--- Diagnostic keymaps
+-- Show diagnostic quick fix list
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
---
 
 -- -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
