@@ -1,11 +1,7 @@
 return {
+	{ "sainnhe/everforest" },
 	{ "folke/tokyonight.nvim" },
-
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	},
+	{ "rose-pine/neovim" },
+	{ "shaunsingh/nord.nvim" },
+	{ "sainnhe/sonokai" },
 }

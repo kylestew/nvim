@@ -1,10 +1,13 @@
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("tokyonight")
+-- vim.cmd.colorscheme("tokyonight")
 -- vim.cmd.colorscheme("tokyonight-night")
 -- vim.cmd.colorscheme("tokyonight-storm")
 -- vim.cmd.colorscheme("tokyonight-day")
 -- vim.cmd.colorscheme("rose-pine")
 -- vim.cmd.colorscheme("rose-pine-moon")
+-- vim.cmd.colorscheme("everforest")
+-- vim.cmd.colorscheme("nord")
+vim.cmd.colorscheme("sonokai")
 
 -- Line numbers
 vim.opt.number = true

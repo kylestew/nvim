@@ -29,6 +29,9 @@ vim.keymap.set("n", "<leader>/", function()
 	}))
 end, { desc = "[/] Fuzzy find buffer" })
 
+-- Open Cursor for current file
+vim.keymap.set("n", "<leader>ai", ":!cursor . %<CR>", { desc = "Open file in Cursor" })
+
 -- Primeagen commands
 
 -- greatest remap ever
@@ -74,6 +77,30 @@ end, { desc = "Cargo Test" })
 vim.keymap.set("n", "<leader>rw", function()
 	vim.cmd("belowright split | term cargo watch -x test")
 end, { desc = "Watch Tests" })
+
+-- C Build
+
+which_key.add({
+	{ "<leader>m", name = "[M]ake" },
+})
+vim.keymap.set("n", "<leader>mm", ":make<CR>", { desc = "Make" })
+vim.keymap.set("n", "<leader>mr", ":make run<CR>", { desc = "Run" })
+vim.keymap.set("n", "<leader>mc", ":make clean<CR>", { desc = "Clean" })
+-- vim.keymap.set("n", "<leader>mm", function()
+-- 	vim.cmd("w") -- Save file first
+-- 	vim.cmd("belowright split | term make")
+-- 	vim.cmd("startinsert")
+-- end, { desc = "Make" })
+-- vim.keymap.set("n", "<leader>mr", function()
+-- 	vim.cmd("w") -- Save file first
+-- 	vim.cmd("belowright split | term make run")
+-- 	vim.cmd("startinsert")
+-- end, { desc = "Make Run" })
+-- vim.keymap.set("n", "<leader>mc", function()
+-- 	vim.cmd("w") -- Save file first
+-- 	vim.cmd("belowright split | term make clean")
+-- 	vim.cmd("startinsert")
+-- end, { desc = "Make Clean" })
 
 -- Show diagnostics in a floating window
 vim.keymap.set("n", "<leader>e", function()
