@@ -9,14 +9,33 @@ vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write Buffer" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Telescope Commands
+local builtin = require("telescope.builtin")
+
+-- Smart: git files if in repo, else all files
+local function smart_files()
+	local ok = pcall(builtin.git_files, { show_untracked = true })
+	if not ok then
+		builtin.find_files({ hidden = true })
+	end
+end
+
 which_key.add({
 	{ "<leader>f", name = "[F]ind" },
-	{ "<leader>ff", builtin.find_files, desc = "[F]ind [F]iles" },
-	{ "<leader>fg", builtin.git_files, desc = "[F]ind [G]it Files" },
-	{ "<leader>fs", builtin.live_grep, desc = "[F]ile [S]earch" },
-	{ "<leader>fh", builtin.help_tags, desc = "[F]ind [H]elp" },
-	{ "<leader>fd", builtin.diagnostics, desc = "[F]ind [D]iagnostics" },
-	{ "<leader><leader>", builtin.buffers, desc = "[ ] Buffers" },
+
+	-- Files
+	{ "<leader>ff", smart_files, desc = "[F]iles (smart: git or all)" },
+	{ "<leader>fF", builtin.find_files, desc = "[F]iles (all)" },
+	{ "<leader>fG", builtin.git_files, desc = "[G]it files" },
+
+	-- Grep
+	{ "<leader>fg", builtin.live_grep, desc = "[G]rep project" },
+	{ "<leader>fw", builtin.grep_string, desc = "[W]ord grep (under cursor)" },
+
+	-- Misc
+	{ "<leader>fh", builtin.help_tags, desc = "[H]elp" },
+	{ "<leader>fd", builtin.diagnostics, desc = "[D]iagnostics" },
+
+	{ "<leader><leader>", builtin.buffers, desc = "Buffers" },
 })
 
 -- Slightly advanced example of overriding default behavior and theme
@@ -116,3 +135,6 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- Format ASM file with nice65
+vim.keymap.set("n", "<leader>af", ":%!nice65 -<CR>", { desc = "Format ASM file (nice65)" })

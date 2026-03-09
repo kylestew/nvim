@@ -1,8 +1,21 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 require("config.lazy")
 require("config.remap")
 require("config.set")
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.asm", "*.s" },
+	command = "set filetype=asmM6502",
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.fs", "*.forth", "*.fth" },
+	callback = function()
+		vim.bo.filetype = "forth"
+	end,
+})
 
 -- https://github.com/VVoruganti/dotfiles/tree/master/neovim/lua/marshmalon
 

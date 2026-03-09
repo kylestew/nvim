@@ -1,0 +1,3 @@
+return {
+	"bellinitte/uxntal.vim",
+}
