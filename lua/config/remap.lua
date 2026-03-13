@@ -48,9 +48,6 @@ vim.keymap.set("n", "<leader>/", function()
 	}))
 end, { desc = "[/] Fuzzy find buffer" })
 
--- Open Cursor for current file
-vim.keymap.set("n", "<leader>ai", ":!cursor . %<CR>", { desc = "Open file in Cursor" })
-
 -- Primeagen commands
 
 -- greatest remap ever
